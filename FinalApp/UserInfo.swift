@@ -14,11 +14,12 @@ class UserInfo: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
     var userDesc = "hello world"
+    var userTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textLabel.text = userDesc
-        self.title = userDesc
+        self.title = userTitle
 //        self.view.addSubview(descriptionView)
 //        NSLayoutConstraint.activate([
 //            descriptionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

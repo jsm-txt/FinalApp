@@ -10,5 +10,6 @@ import UIKit
 
 struct Users {
     var title: String
+    var name: String
     var description: String
 }

@@ -11,9 +11,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var userList = [
-        Users(title: "Mark", description: "Facebook"),
-        Users(title: "Jack", description: "Twitter "),
-        Users(title: "Elon", description: "Tesla, twitter2.0"),
+        Users(title: "Facebook CEO", name: "Mark Zuck", description: "Mark Elliot Zuckerberg (/ˈzʌkərbɜːrɡ/; born May 14, 1984) is an American media magnate, internet entrepreneur, and philanthropist. He is known for co-founding the social media website Facebook and its parent company Meta Platforms (formerly Facebook, Inc.), of which he is the chairman, chief executive officer, and controlling shareholder"),
+        Users(title: "No Longer part of Twitter", name:"Jack", description: "Jack Patrick Dorsey (born November 19, 1976)[4] is an American Internet entrepreneur, programmer, and philanthropist who is the co-founder and former CEO of Twitter, as well as the founder and principal executive officer of Block, Inc., a financial payments company. "),
+        Users(title: "World's Richest", name: "Elon Musk", description: "Tesla, twitter2.0"),
     ]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = userList[indexPath.row].title
+        cell.textLabel?.text = userList[indexPath.row].name
         return cell
     }
     
@@ -57,6 +57,7 @@ extension ViewController: UITableViewDelegate{
         let vc = storyboard?.instantiateViewController(withIdentifier: "details") as! UserInfo
         navigationController?.pushViewController(vc, animated: true)
         vc.userDesc = userList[indexPath.row].description
+        vc.userTitle = userList[indexPath.row].title
             
         tableView.deselectRow(at: indexPath, animated: true)
     }
