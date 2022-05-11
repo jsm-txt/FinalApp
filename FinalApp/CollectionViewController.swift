@@ -44,7 +44,6 @@ extension CollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gridCell", for: indexPath) as! CollectionViewCell
         let item = imageList[indexPath.row]
-        
         cell.imageView.image = item
         return cell
     }
@@ -55,4 +54,13 @@ extension CollectionViewController: UICollectionViewDelegateFlowLayout {
 //    }
 //
 }
-extension ViewController: UICollectionViewDelegate {}
+extension CollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "imageInfo") as! ImageInfo
+        navigationController?.pushViewController(vc, animated: true)
+        vc.myImage = imageList[indexPath.row]
+            
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+}
